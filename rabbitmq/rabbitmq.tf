@@ -1,14 +1,12 @@
-# # RabbitMQ
-
 resource "kubernetes_namespace" "rabbitmq_namespace" {
   metadata {
-    name = "mq"
+    name = "rabbitmq"
     annotations = {
-      name = "mq"
+      name = "rabbitmq"
     }
 
     labels = {
-      mylabel = "mq"
+      mylabel = "rabbitmq"
     }
   }
 }
@@ -26,6 +24,7 @@ resource "helm_release" "install_rabbitmq_operator" {
 
 resource "kubernetes_manifest" "rabbitmq" {
   manifest  = yamldecode(file("k8s/rabbitmq.yml"))
+  depends_on = [ helm_release.install_rabbitmq_operator ]
 }
 
 output "rabbitmq_username" {

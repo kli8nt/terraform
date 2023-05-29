@@ -10,3 +10,11 @@ provider "helm" {
     config_context = var.kube_context
   }
 }
+
+output "Kubeconfig_Path" {
+  value = var.kubeconfig_path
+}
+
+output "Kube_context" {
+  value = var.kube_context
+}

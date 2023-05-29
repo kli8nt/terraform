@@ -10,7 +10,7 @@ spec:
       spec:
         podManagementPolicy: OrderedReady
   service:
-    type: ClusterIP
+    type: LoadBalancer
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
