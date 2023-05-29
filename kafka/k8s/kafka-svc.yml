@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kafka-broker
+  name: kafka-service
+  namespace: kafka
+spec:
+  type: NodePort
+  ports:
+  - port: 9092
+    nodePort: 30092
+    targetPort: 9092
+  selector:
+    app: kafka-broker
